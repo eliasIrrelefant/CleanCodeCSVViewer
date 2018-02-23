@@ -12,8 +12,7 @@ import java.util.Arrays;
 
 
 public class CSVReader {
-
-    DataWriter writer = new DataWriter();
+    DataStore writer = new DataStore();
 
     public void readFile(String filename) {
         String[] rawlines = null;

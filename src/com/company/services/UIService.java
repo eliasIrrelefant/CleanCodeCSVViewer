@@ -1,12 +1,10 @@
 package com.company.services;
 
 import com.company.models.Record;
+import com.company.store.ProcessingData;
 import java.util.Scanner;
 
 public class UIService {
-
-    // header zeile fehlt noch
-
     private Scanner input = new Scanner(System.in);
     Integer[] colWidth;
 
@@ -26,11 +24,25 @@ public class UIService {
         return input.next();
     }
 
-
-    public void printRecord(Record[] input) {
+    public void printRecords(Record[] input) {
         determineColWidths(input);
-        // #TODO print head
+        printHead(input);
         printRecordEntries(input);
+    }
+
+    private void printHead(Record[] input) {
+        printLineSeparatorForInput(input);
+
+        String[] head = ProcessingData.HEADLINE;
+        for (int i = 0; i < head.length; i++) {
+            System.out.print(" # " + head[i]);
+            determinedWhitespace(head[i].length(), i);
+        }
+        System.out.print(" #");
+        System.out.println();
+
+
+        printLineSeparatorForInput(input);
     }
 
     private void printRecordEntries(Record[] input) {

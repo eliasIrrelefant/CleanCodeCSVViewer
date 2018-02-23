@@ -3,9 +3,7 @@ package com.company.services;
 import com.company.store.ProcessingData;
 
 // #TODO Data Store
-public class DataWriter {
-
-    // GETTER
+public class DataStore {
 
     // save headline ...
     void setHeadline(String[] headline) {
@@ -21,6 +19,15 @@ public class DataWriter {
         ProcessingData.RAWLINES = rawlines;
     }
 
+    String[] getHeadline() {
+        return ProcessingData.HEADLINE;
+    }
 
+    Long getPageNr() {
+        return ProcessingData.CURRENT_PAGE;
+    }
 
+    String[] rawlines() {
+        return ProcessingData.RAWLINES;
+    }
 }
