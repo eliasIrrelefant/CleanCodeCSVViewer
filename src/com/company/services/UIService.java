@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class UIService {
     private Scanner input = new Scanner(System.in);
-    Integer[] colWidth;
+    private DataStore dataStore = new DataStore();
+    private Integer[] colWidth;
 
     public void printGreeting() {
         System.out.println("Willkommen zum CSVViewer3000");
@@ -14,13 +15,13 @@ public class UIService {
 
     public Character awaitInput() {
         System.out.println("F)irst P)rev N)ext L)ast E)xit");
-        // #TODO validation
-        return input.next().charAt(0);
+        // #TODO validation and feedback to user
+        return Character.toUpperCase(input.next().charAt(0));
     }
 
     public String getFilename() {
         System.out.println("Bitte geben Sie den Namen der CSV-Datei ein");
-        // #TODO validation
+        // #TODO validation, .csv ending
         return input.next();
     }
 
@@ -40,9 +41,6 @@ public class UIService {
         }
         System.out.print(" #");
         System.out.println();
-
-
-        printLineSeparatorForInput(input);
     }
 
     private void printRecordEntries(Record[] input) {
@@ -87,22 +85,26 @@ public class UIService {
     private void determineColWidths(Record[] input) {
         colWidth = new Integer[input[0].getData().length];
 
+        compareColWidthOfSingeEntry(dataStore.getHeadline());
+
         for (Record entry : input) {
             if (entry == null) {
                 continue;
             }
 
-            for (int i = 0; i < entry.getData().length; i++) {
-                if (colWidth[i] == null) {
-                    colWidth[i] = 0;
-                }
-
-                if (entry.getData()[i].length() > colWidth[i]) {
-                    colWidth[i] = entry.getData()[i].length();
-                }
-            }
+            compareColWidthOfSingeEntry(entry.getData());
         }
     }
 
+    private void compareColWidthOfSingeEntry(String[] entry) {
+        for (int i = 0; i < entry.length; i++) {
+            if (colWidth[i] == null) {
+                colWidth[i] = 0;
+            }
 
+            if (entry[i].length() > colWidth[i]) {
+                colWidth[i] = entry[i].length();
+            }
+        }
+    }
 }

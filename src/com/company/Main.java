@@ -20,14 +20,13 @@ public class Main {
         pagePrinter.printFirstPage();
 
 
+
+        pagePrinter.executeUsersAction();
+
+
         // Kommt in den PagePrinter, die Main entscheidet, auf welcher Seite wir starten
-
-
-
-        // --- Show Page x ---
 
         // #TODO hier kommt dann des java 8 if dings
         //        uiService.awaitInput();
-
     }
 }

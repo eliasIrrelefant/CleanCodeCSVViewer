@@ -2,7 +2,6 @@ package com.company.services;
 
 import com.company.store.ProcessingData;
 
-// #TODO Data Store
 public class DataStore {
 
     // save headline ...
@@ -10,7 +9,7 @@ public class DataStore {
         ProcessingData.HEADLINE = headline;
     }
 
-    void setPageNr(Long pageNr) {
+    void setPageNr(Integer pageNr) {
         ProcessingData.CURRENT_PAGE = pageNr;
     }
 
@@ -19,15 +18,23 @@ public class DataStore {
         ProcessingData.RAWLINES = rawlines;
     }
 
+    void setMaxPages(Integer maxPages) {
+        ProcessingData.TOTAL_PAGES = maxPages;
+    }
+
     String[] getHeadline() {
         return ProcessingData.HEADLINE;
     }
 
-    Long getPageNr() {
+    Integer getPageNr() {
         return ProcessingData.CURRENT_PAGE;
     }
 
-    String[] rawlines() {
+    String[] getRawlines() {
         return ProcessingData.RAWLINES;
+    }
+
+    Integer getMaxPages() {
+        return ProcessingData.TOTAL_PAGES;
     }
 }
