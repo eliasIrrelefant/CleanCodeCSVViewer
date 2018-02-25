@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class BrowseCsvService {
     DataStore dataStore = new DataStore();
 
-    public String[] extractPage(Integer page) {
+    String[] extractPage(Integer page) {
         Integer firstLine = page * Main.PAGE_ROW_LIMIT;
         Integer lastLine = firstLine + Main.PAGE_ROW_LIMIT;
 

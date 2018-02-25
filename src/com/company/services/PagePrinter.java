@@ -3,13 +3,12 @@ package com.company.services;
 import com.company.models.Record;
 
 public class PagePrinter {
-    BrowseCsvService browseCsvService = new BrowseCsvService();
-    UIService uiService = new UIService();
-    DataStore dataStore = new DataStore();
+    private BrowseCsvService browseCsvService = new BrowseCsvService();
+    private UIService uiService = new UIService();
+    private DataStore dataStore = new DataStore();
 
     public void printGreeting() {
         uiService.printGreeting();
-
     }
 
     public void printFirstPage() {
@@ -47,7 +46,7 @@ public class PagePrinter {
     }
 
     public String getFilename(String[] args) {
-        if (args.length <= 0 && args[0].isEmpty()) {
+        if (args.length <= 0 || args[0].isEmpty()) {
             return uiService.getFilename();
         } else {
             return args[0];

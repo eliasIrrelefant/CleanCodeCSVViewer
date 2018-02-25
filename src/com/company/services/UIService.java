@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class UIService {
     private Scanner input = new Scanner(System.in);
     private DataStore dataStore = new DataStore();
-    private Integer[] colWidth;
+    public Integer[] colWidth;
 
     public void printGreeting() {
         System.out.println("Willkommen zum CSVViewer3000");
