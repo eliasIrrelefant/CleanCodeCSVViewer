@@ -13,8 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CSVReader {
-    DataStore writer = new DataStore();
-    Logger logger = Logger.getAnonymousLogger();
+    private DataStore store = new DataStore();
+    private Logger logger = Logger.getAnonymousLogger();
 
     public void readFile(String filename) {
 
@@ -28,10 +28,10 @@ public class CSVReader {
             logger.log(Level.SEVERE, "Problem reading Csv", new CsvFileReadErrorException("Something went wrong with reading the csv"));
         }
 
-        writer.setHeadline(rawlines[0].split(Main.SEPARATOR));
+        store.setHeadline(rawlines[0].split(Main.SEPARATOR));
         Integer maxPages = (rawlines.length - 1) / Main.PAGE_ROW_LIMIT;
-        writer.setMaxPages(maxPages);
-        writer.setRawlines(Arrays.copyOfRange(rawlines, 1, rawlines.length));
+        store.setMaxPages(maxPages);
+        store.setRawlines(Arrays.copyOfRange(rawlines, 1, rawlines.length));
     }
 
 

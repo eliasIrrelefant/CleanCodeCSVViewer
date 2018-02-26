@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class PagePrinterTest {
+class PagePrinterTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    PagePrinter pagePrinter = new PagePrinter();
+    private PagePrinter pagePrinter = new PagePrinter();
 
     @BeforeAll
-    public void setUpStreams() {
+    void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
 
@@ -27,11 +27,14 @@ public class PagePrinterTest {
     // ist so ein Test sinnvoll ?
     @Test void shouldPrintGreeting() {
         pagePrinter.printGreeting();
-        assertEquals("Willkommen zum CSVViewer3000", outContent.toString());
+        assertEquals("Willkommen zum CSVViewer3000\n", outContent.toString());
     }
 
+    // hier wären integrationstest sinnvoll die überprüfen ob z.b. die richte seitenzahl geschrieben wird.
+    // dazu müsste ich dann die jeweiligen services mocken und deren funktionen emulieren
+
     @AfterAll
-    public void restoreStreams() {
+    void restoreStreams() {
         System.setOut(System.out);
     }
 }

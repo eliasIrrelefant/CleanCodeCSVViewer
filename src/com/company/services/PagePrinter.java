@@ -45,14 +45,6 @@ public class PagePrinter {
         uiService.printRecords(records);
     }
 
-    public String getFilename(String[] args) {
-        if (args.length <= 0 || args[0].isEmpty()) {
-            return uiService.getFilename();
-        } else {
-            return args[0];
-        }
-    }
-
     public void executeUsersAction() {
         Character input = uiService.awaitInput();
 

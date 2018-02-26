@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.services.CSVReader;
+import com.company.services.FilenameService;
 import com.company.services.PagePrinter;
 
 public class Main {
@@ -10,21 +11,16 @@ public class Main {
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader();
         PagePrinter pagePrinter = new PagePrinter();
+        FilenameService filenameService = new FilenameService();
 
         pagePrinter.printGreeting();
-        String filename = pagePrinter.getFilename(args);
+
+        // Usage of lambda expressions for better testing
+        String filename = filenameService.getFilename(args);
 
         csvReader.readFile(filename);
         pagePrinter.printFirstPage();
 
-
-
         pagePrinter.executeUsersAction();
-
-
-        // Kommt in den PagePrinter, die Main entscheidet, auf welcher Seite wir starten
-
-        // #TODO hier kommt dann des java 8 if dings
-        //        uiService.awaitInput();
     }
 }

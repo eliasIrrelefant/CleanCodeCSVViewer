@@ -11,8 +11,8 @@ import org.junit.jupiter.api.TestInstance;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UIServiceTest {
 
-    UIService uiService = new UIService();
-    Record[] recordsAsInputThreeColsFiveEntries;
+    private UIService uiService = new UIService();
+    private Record[] recordsAsInputThreeColsFiveEntries;
 
     @BeforeAll void setUp() {
         recordsAsInputThreeColsFiveEntries = new Record[5];
@@ -28,7 +28,6 @@ class UIServiceTest {
         }
     }
 
-    // scheitert an mockito integration
     @Test void shouldSetColWidths() {
         uiService.printRecords(recordsAsInputThreeColsFiveEntries);
 

@@ -60,6 +60,7 @@ public class UIService {
         }
     }
 
+    // ist es sinnvoll diese methode in separate klasse zu extrahieren um diese Testen zu können ?
     private void determinedWhitespace(Integer wordLengh, Integer colIndex) {
         if (colWidth[colIndex] > wordLengh) {
             Integer charDiff = colWidth[colIndex] - wordLengh;
@@ -69,6 +70,7 @@ public class UIService {
         }
     }
 
+    // ist es sinnvoll diese methode in separate klasse zu extrahieren um diese Testen zu können ?
     private void printLineSeparatorForInput(Record[] input) {
         System.out.print(" ");
         for (int x = 0; x < input[0].getData().length; x++) {

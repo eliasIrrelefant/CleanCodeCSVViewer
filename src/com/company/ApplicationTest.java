@@ -2,13 +2,14 @@ package com.company;
 
 import org.junit.jupiter.api.Test;
 
-public class ApplicationTest {
+class ApplicationTest {
 
-    Main main = new Main();
-
+    private Main main = new Main();
+    
+    // How to simulate input ?
     @Test void shouldSuccessfullyRunTheApplication() {
-
-
+        String[] args = new String[1];
+        args[0] = "test2.csv";
+        main.main(args);
     }
-
 }
