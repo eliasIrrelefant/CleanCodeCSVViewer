@@ -2,25 +2,31 @@ package com.company;
 
 import com.company.services.CSVReader;
 import com.company.services.FilenameService;
-import com.company.services.PagePrinter;
+import com.company.services.PageOutput;
 
 public class Main {
-    public static Integer PAGE_ROW_LIMIT = 5;
-    public static String SEPARATOR = ";";
-
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader();
-        PagePrinter pagePrinter = new PagePrinter();
+        PageOutput pageOutput = new PageOutput();
         FilenameService filenameService = new FilenameService();
 
-        pagePrinter.printGreeting();
+        pageOutput.printGreeting();
 
         // Usage of lambda expressions for better testing
         String filename = filenameService.getFilename(args);
 
+        // ggf. File zurückgeben und im nächsten Schritt in den Store legen.
         csvReader.readFile(filename);
-        pagePrinter.printFirstPage();
 
-        pagePrinter.executeUsersAction();
+        // TODO In der Kritik wurde der zentrale Zustand bemängelt, wieso ist das nicht gut?
+        // Im Flowchart ist es so angegeben. Sind zentrale Konfig-Dateien nicht erwünscht?
+
+        // TODO Naming im Flowchart vs. Naming in der Implementierung. parseRecords wurde bemängelt, stand aber so in den Anforderungen
+
+
+
+        pageOutput.printFirstPage();
+
+        pageOutput.executeUsersAction();
     }
 }

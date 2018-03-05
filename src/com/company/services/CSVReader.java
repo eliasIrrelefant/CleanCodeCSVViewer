@@ -1,7 +1,7 @@
 package com.company.services;
 
-import com.company.Main;
 import com.company.exceptions.CsvFileReadErrorException;
+import com.company.store.ApplicationParameters;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -13,13 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CSVReader {
-    private DataStore store = new DataStore();
+    private DataStore dataStore = new DataStore();
     private Logger logger = Logger.getAnonymousLogger();
 
     public void readFile(String filename) {
 
         String[] rawlines = null;
-        Path filePath = Paths.get(".", "res", filename).normalize().toAbsolutePath();
+        Path filePath = Paths.get(filename);
 
         try {
             List<String> rawlineList = Files.readAllLines(filePath, StandardCharsets.UTF_8);
@@ -28,12 +28,9 @@ public class CSVReader {
             logger.log(Level.SEVERE, "Problem reading Csv", new CsvFileReadErrorException("Something went wrong with reading the csv"));
         }
 
-        store.setHeadline(rawlines[0].split(Main.SEPARATOR));
-        Integer maxPages = (rawlines.length - 1) / Main.PAGE_ROW_LIMIT;
-        store.setMaxPages(maxPages);
-        store.setRawlines(Arrays.copyOfRange(rawlines, 1, rawlines.length));
+        dataStore.setHeadline(rawlines[0].split(ApplicationParameters.SEPARATOR));
+        Integer maxPages = (rawlines.length - 1) / ApplicationParameters.PAGE_ROW_LIMIT;
+        dataStore.setMaxPages(maxPages);
+        dataStore.setRawlines(Arrays.copyOfRange(rawlines, 1, rawlines.length));
     }
-
-
-
 }

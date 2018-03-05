@@ -1,34 +1,33 @@
 package com.company.services;
 
-import com.company.Main;
-import com.company.models.Record;
+import com.company.store.ApplicationParameters;
 import java.util.Arrays;
 
 public class BrowseCsvService {
     DataStore dataStore = new DataStore();
 
     String[] extractPage(Integer page) {
-        Integer firstLine = page * Main.PAGE_ROW_LIMIT;
-        Integer lastLine = firstLine + Main.PAGE_ROW_LIMIT;
+        Integer firstLine = page * ApplicationParameters.PAGE_ROW_LIMIT;
+        Integer lastLine = firstLine + ApplicationParameters.PAGE_ROW_LIMIT;
 
         return Arrays.copyOfRange(dataStore.getRawlines(), firstLine, lastLine);
     }
 
-    // record parser
-    public Record[] parseRecords(String[] data) {
-        Record[] recordResult = new Record[data.length];
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] == null) {
-                continue;
-            }
+    String[] extractPreviousPage(Integer page) {
+        Integer firstLine = (page -1) * ApplicationParameters.PAGE_ROW_LIMIT;
+        Integer lastLine = firstLine + ApplicationParameters.PAGE_ROW_LIMIT;
 
-            Record record = new Record();
-            record.setData(data[i].split(Main.SEPARATOR));
-            recordResult[i] = record;
-        }
-
-        return recordResult;
+        return Arrays.copyOfRange(dataStore.getRawlines(), firstLine, lastLine);
     }
+
+    String[] extractNextPage(Integer page) {
+        Integer firstLine = (page +1) * ApplicationParameters.PAGE_ROW_LIMIT;
+        Integer lastLine = firstLine + ApplicationParameters.PAGE_ROW_LIMIT;
+
+        return Arrays.copyOfRange(dataStore.getRawlines(), firstLine, lastLine);
+    }
+
+
 
     public Integer ensurePageIsInTheBound(Integer page) {
         if (page < 0) {

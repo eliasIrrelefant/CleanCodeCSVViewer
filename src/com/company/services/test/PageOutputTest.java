@@ -2,21 +2,20 @@ package com.company.services.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.company.services.PagePrinter;
+import com.company.services.PageOutput;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PagePrinterTest {
+class PageOutputTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    private PagePrinter pagePrinter = new PagePrinter();
+    private PageOutput pageOutput = new PageOutput();
 
     @BeforeAll
     void setUpStreams() {
@@ -26,7 +25,7 @@ class PagePrinterTest {
 
     // ist so ein Test sinnvoll ?
     @Test void shouldPrintGreeting() {
-        pagePrinter.printGreeting();
+        pageOutput.printGreeting();
         assertEquals("Willkommen zum CSVViewer3000\n", outContent.toString());
     }
 
