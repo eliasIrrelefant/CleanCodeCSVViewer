@@ -8,7 +8,7 @@ public class ApplicationTest {
     
     // How to simulate input ?
     @Test
-    private void shouldSuccessfullyRunTheApplication() {
+    public void shouldSuccessfullyRunTheApplication() {
         String[] args = new String[1];
         args[0] = "test2.csv";
         main.main(args);
