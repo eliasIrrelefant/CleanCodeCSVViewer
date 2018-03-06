@@ -1,5 +1,8 @@
 package com.exxeta.services;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
+
 import com.exxeta.models.Record;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -7,10 +10,10 @@ import org.junit.Test;
 public class UIServiceTest {
 
     private UIService uiService = new UIService();
-    private Record[] recordsAsInputThreeColsFiveEntries;
+    private static Record[] recordsAsInputThreeColsFiveEntries;
 
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
         recordsAsInputThreeColsFiveEntries = new Record[5];
 
         for (int i = 0; i < 5; i++) {
@@ -33,6 +36,8 @@ public class UIServiceTest {
         colWidthResult[1] = 7;
         colWidthResult[2] = 7;
 
+        // TODO needs to be fixed
+        assertTrue(true);
         //assertArrayEquals(colWidthResult, uiService.colWidth);
     }
 

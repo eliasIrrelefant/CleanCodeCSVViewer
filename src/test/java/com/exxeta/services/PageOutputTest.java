@@ -9,12 +9,12 @@ import org.junit.Test;
 
 public class PageOutputTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     private PageOutput pageOutput = new PageOutput();
 
     @BeforeClass
-    public void setUpStreams() {
+    public static void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
 
@@ -30,7 +30,7 @@ public class PageOutputTest {
     // dazu müsste ich dann die jeweiligen services mocken und deren funktionen emulieren
 
     @AfterClass
-    public void restoreStreams() {
+    public static void restoreStreams() {
         System.setOut(System.out);
     }
 }
