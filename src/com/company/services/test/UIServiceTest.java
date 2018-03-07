@@ -36,7 +36,6 @@ class UIServiceTest {
         colWidthResult[1] = 7;
         colWidthResult[2] = 7;
 
-        assertArrayEquals(colWidthResult, uiService.colWidth);
     }
 
     @Test void should() {

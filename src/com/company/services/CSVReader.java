@@ -30,6 +30,9 @@ public class CSVReader {
 
         dataStore.setHeadline(rawlines[0].split(ApplicationParameters.SEPARATOR));
         Integer maxPages = (rawlines.length - 1) / ApplicationParameters.PAGE_ROW_LIMIT;
+        if ((rawlines.length-1) % ApplicationParameters.PAGE_ROW_LIMIT == 0) {
+            maxPages--;
+        }
         dataStore.setMaxPages(maxPages);
         dataStore.setRawlines(Arrays.copyOfRange(rawlines, 1, rawlines.length));
     }

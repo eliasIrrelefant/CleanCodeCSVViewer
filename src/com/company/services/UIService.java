@@ -108,11 +108,11 @@ public class UIService {
         System.arraycopy(columnWidth, 0, result, 0, columnWidth.length);
 
         for (int i = 0; i < entry.length; i++) {
-            if (columnWidth[i] == null) {
+            if (result[i] == null) {
                 result[i] = 0;
             }
 
-            if (entry[i].length() > columnWidth[i]) {
+            if (entry[i].length() > result[i]) {
                 result[i] = entry[i].length();
             }
         }
