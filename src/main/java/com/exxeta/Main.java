@@ -24,7 +24,6 @@ public class Main {
         // TODO Naming im Flowchart vs. Naming in der Implementierung. parseRecords wurde bemängelt, stand aber so in den Anforderungen
 
 
-
         pageOutput.printFirstPage();
 
         pageOutput.executeUsersAction();

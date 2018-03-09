@@ -2,7 +2,6 @@ package com.exxeta.services;
 
 import com.exxeta.exceptions.CsvFileReadErrorException;
 import com.exxeta.store.ApplicationParameters;
-import com.sun.org.apache.bcel.internal.util.ClassPath;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -20,6 +19,9 @@ public class CSVReader {
     public void readFile(String filename) {
 
         String[] rawlines = null;
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        //URI uri = classLoader.getResource("test.csv").toURI();
         Path filePath = Paths.get(filename);
 
         System.out.println(filePath.getFileSystem().getRootDirectories());
