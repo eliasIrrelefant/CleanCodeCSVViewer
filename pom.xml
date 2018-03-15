@@ -7,8 +7,11 @@
     <groupId>com.exxeta.cleancode</groupId>
     <artifactId>CleanCodeCSVViewer</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Haushaltsbuch</module>
+    </modules>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
